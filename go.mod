@@ -1,6 +1,6 @@
-module github.com/fatih/color
+module github.com/qwenode/color
 
-go 1.13
+go 1.16
 
 require (
 	github.com/mattn/go-colorable v0.1.8
