@@ -1,10 +1,16 @@
 package color
 
-import "time"
+import (
+	"strings"
+	"time"
+)
 
 var enableTimePrefix = false
-
-func EnableTimePrefix() {
+var prefixAddition = ""
+func EnableTimePrefix(additionPrefix... string) {
+	if len(additionPrefix) > 0 {
+		prefixAddition=strings.Join(additionPrefix,"")
+	}
 	enableTimePrefix = true
 }
 func SuccessMessage(format string, a ...interface{}) {
@@ -26,5 +32,6 @@ func getTimePrefix() string {
 	if !enableTimePrefix {
 		return ""
 	}
-	return time.Now().Format("[2006/01/02 15:04:05] ")
+	s:= time.Now().Format("[2006/01/02 15:04:05] ")
+	return s+prefixAddition
 }
